@@ -2,6 +2,7 @@ import spotipy
 import time
 from spotipy.oauth2 import SpotifyOAuth
 from flask import Flask, request, url_for, session, redirect
+import transition_order as t_ord
 
 
 '''
@@ -44,7 +45,7 @@ def save():
 
     # Get list of user's playlists
     user_playlists = sp.current_user_playlists()['items']
-    playlist_pick = "GL copy"  # This holds the playlist name in which songs will be pulled from.
+    playlist_pick = "Top2"  # This holds the playlist name in which songs will be pulled from.
     pl_pick_id = None
 
     # Gets playlist id and checks that it exists.
@@ -60,19 +61,11 @@ def save():
     if len(song_uris) <= 0:
         return "Selected playlist is empty."
 
-    # Get data to be passed in for similarity calculations
-    song_features = []
-    for i in range(0, (len(song_uris) // 100) + 1):
-        track_ids = [item[0] for item in song_uris[i:i + 100]]
-        extracted_f = sp.audio_features(track_ids)
-        for e in extracted_f:
-            song_features.append(e)
-
     # Pass data to rest of algorithm
     # The remainder of the algorithm until an ordered list is returned will be performed in other classes.
     # The other classes will perform the solution to the TSP along with calculating similarity scores between
-    #     songs in order to determine optimum path.
-    ordered_list = None     # Make call here in place of None
+    #     songs in order to determine the optimum path through the playlist.
+    ordered_list = t_ord.transitions_main(sp, song_uris)
 
     # Create two list containing all song uri's in the playlist.
     # remove_list: will be used to remove songs from the original playlist
@@ -81,7 +74,7 @@ def save():
     add_list = []
     for itr, song in enumerate(song_uris):
         remove_list.append(song[0])  # Appends the track_id to remove_list
-        # add_list.append(song_uris[ordered_list[itr]][0]  Uncomment once ordered_list is not None
+        add_list.append(song_uris[ordered_list[itr]][0])
 
     # Uses the remove_list list to remove all songs from the given playlist 100 items at a time.
     while len(remove_list) > 0:
