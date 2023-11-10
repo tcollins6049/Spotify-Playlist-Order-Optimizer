@@ -61,6 +61,12 @@ def save():
         return "Selected playlist is empty."
 
     # Get data to be passed in for similarity calculations
+    song_features = []
+    for i in range(0, (len(song_uris) // 100) + 1):
+        track_ids = [item[0] for item in song_uris[i:i + 100]]
+        extracted_f = sp.audio_features(track_ids)
+        for e in extracted_f:
+            song_features.append(e)
 
     # Pass data to rest of algorithm
     # The remainder of the algorithm until an ordered list is returned will be performed in other classes.
