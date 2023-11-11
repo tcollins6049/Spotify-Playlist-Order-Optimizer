@@ -45,7 +45,7 @@ def save():
 
     # Get list of user's playlists
     user_playlists = sp.current_user_playlists()['items']
-    playlist_pick = "MJ copy"  # This holds the playlist name in which songs will be pulled from.
+    playlist_pick = "GL copy"  # This holds the playlist name in which songs will be pulled from.
     pl_pick_id = None
 
     # Gets playlist id and checks that it exists.
