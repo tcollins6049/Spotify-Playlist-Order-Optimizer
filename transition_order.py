@@ -1,4 +1,6 @@
 from sklearn.metrics.pairwise import euclidean_distances
+import data_prep as dp
+import create_visuals as cv
 
 
 # ____________________________________________________________________________________________________________________ #
@@ -60,11 +62,16 @@ def get_audio_features(sp, song_uris):
 
 
 # ____________________________________________________________________________________________________________________ #
+def visual_hub(sp, song_uris, audio_features):
+    x, y, z, audio_features = dp.data_prep_main(sp, song_uris, audio_features)
+    cv.create_visuals_main(x, y, z, audio_features)
+
+
 # This will act as the main method to be called by spotify_access.py
 def transitions_main(sp, song_uris):
     audio_features = get_audio_features(sp, song_uris)
     order = naive_nearest_neighbor(audio_features, song_uris)
-
+    visual_hub(sp, song_uris, audio_features)   # Comment if you don't want to see visuals.
     return order
 
 
