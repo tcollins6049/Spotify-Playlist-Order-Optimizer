@@ -62,16 +62,18 @@ def get_audio_features(sp, song_uris):
 
 
 # ____________________________________________________________________________________________________________________ #
-def visual_hub(sp, song_uris, audio_features):
-    x, y, z, audio_features = dp.data_prep_main(sp, song_uris, audio_features)
-    cv.create_visuals_main(x, y, z, audio_features)
+# This method leads to all visualization creation, if this method is not called then data_prep.py and create_visual.py
+# will never be used.
+def visual_hub(opt_order, song_uris, audio_features):
+    x, y, z, audio_features = dp.data_prep_main(song_uris, audio_features)
+    cv.create_visuals_main(x, y, z, audio_features, opt_order)
 
 
 # This will act as the main method to be called by spotify_access.py
 def transitions_main(sp, song_uris):
     audio_features = get_audio_features(sp, song_uris)
     order = naive_nearest_neighbor(audio_features, song_uris)
-    visual_hub(sp, song_uris, audio_features)   # Comment if you don't want to see visuals.
+    visual_hub(order, song_uris, audio_features)   # Comment if you don't want to see visuals.
     return order
 
 

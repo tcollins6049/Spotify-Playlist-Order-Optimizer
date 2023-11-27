@@ -43,7 +43,7 @@ def get_z(audio_features):
         return None
 
 
-def data_prep_main(sp, song_uris, audio_features):
+def data_prep_main(song_uris, audio_features):
     audio_features = normalize_features(audio_features)
     x = get_x(audio_features)
     y = get_y(audio_features)
