@@ -13,8 +13,6 @@ A Python-based tool designed to reorder songs within a Spotify playlist to achie
 
 ## Algorithms
 ### 1. Naive Nearest Neighbor
-A greedy algorithm that starts at a random song and iteratively adds the nearest unvisited song to the order.
-
-**Advantages**: Simple and fast solution
-
-**Disadvantages**: May result in suboptimal solutions.
+- A greedy algorithm that starts at a random song and iteratively adds the nearest unvisited song to the order.
+- **Advantages**: Simple and fast solution
+- **Disadvantages**: May result in suboptimal solutions.
