@@ -34,3 +34,27 @@ This project compares the performance of the algorithms above based on the avera
 | NNN       | 0.57         |
 | MST       | 0.48         |
 | Heur      | 0.4          |
+
+**100 Songs**
+| Algorithm | Avg Distance |
+| --------- | ------------ |
+| Guessing  | 0.58         |
+| NNN       | 0.32         |
+| MST       | 0.31         |
+| Heur      | 0.54         |
+
+**1000 Songs**
+| Algorithm | Avg Distance |
+| --------- | ------------ |
+| Guessing  | 0.85         |
+| NNN       | 0.26         |
+| MST       | 0.28         |
+| Heur      | 0.83         |
+
+**5000 Songs**
+| Algorithm | Avg Distance |
+| --------- | ------------ |
+| Guessing  | 0.97         |
+| NNN       | 0.23         |
+| MST       | 0.25         |
+| Heur      | 0.95         |
