@@ -27,8 +27,8 @@ A Python-based tool designed to reorder songs within a Spotify playlist to achie
 ## Results
 This project compares the performance of the algorithms above based on the average Euclidean distance throughout the current playlist ordering. The following are the results after running playlist optimization for playlists of the following sizes:
 
-| 10 Songs                 |
-| ------------------------ |
+| 10 Songs    |
+| ----------- |
 | Algorithm | Avg Distance |
 | --------- | ------------ |
 | Guessing  | 0.4          |
