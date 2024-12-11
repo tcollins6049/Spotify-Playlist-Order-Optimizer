@@ -58,3 +58,5 @@ This project compares the performance of the algorithms above based on the avera
 | NNN       | 0.23         |
 | MST       | 0.25         |
 | Heur      | 0.95         |
+
+With larger playlist sizes, Naive Nearest Neighbor provides the smallest average Euclidean distance overall with the MST solution performing only slightly worse. The heuristics solution proves to be little better than randomly guessing a playlist order.
